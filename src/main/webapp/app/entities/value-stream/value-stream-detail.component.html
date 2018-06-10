@@ -1,0 +1,41 @@
+
+<div *ngIf="valueStream">
+    <h2><span>Value Stream</span> {{valueStream.id}}</h2>
+    <hr>
+    <jhi-alert-error></jhi-alert-error>
+    <dl class="row-md jh-entity-details">
+        <dt><span>Name</span></dt>
+        <dd>
+            <span>{{valueStream.name}}</span>
+        </dd>
+        <dt><span>Image</span></dt>
+        <dd>
+            <div *ngIf="valueStream.image">
+                <a>
+                    <div class='photo-container'>
+                        <img id="{{valueStream.id}}" [src]="'data:' + valueStream.imageContentType + ';base64,' + valueStream.image" style="max-width: 100%;" alt="valueStream image"/>
+                    </div>    
+                </a>
+                {{valueStream.imageContentType}}, {{byteSize(valueStream.image)}}
+            </div>
+        </dd>
+    </dl>
+    <button type="button"
+            (click)="enableTag()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Enable </span>
+    </button>
+    <button type="submit"
+            (click)="previousState()"
+            class="btn btn-info">
+        <span class="fa fa-arrow-left"></span>&nbsp;<span> Back</span>
+    </button>
+
+    <button type="button"
+            [routerLink]="['/', { outlets: { popup: 'value-stream/'+ valueStream.id + '/edit'} }]"
+            replaceUrl="true"
+            queryParamsHandling="merge"
+            class="btn btn-primary">
+        <span class="fa fa-pencil"></span>&nbsp;<span> Edit</span>
+    </button>
+</div>
