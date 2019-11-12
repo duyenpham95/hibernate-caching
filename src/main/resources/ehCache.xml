@@ -1,0 +1,13 @@
+<!--This is root element of ehcache-->
+<ehcache>
+    <!-- path defined where the objects will be temporarily stored-->
+    <diskStore path="java.io.tmpdir"/>
+
+    <!--  maxElementsInMemory: We can have 100 elements caches at a time-->
+    <!--  eternal: they should not be cache forever-->
+    <!--  timeToIdleSeconds: object is not accessed for more than 5 seconds it will be removed from cache -->
+    <!--  timeToLiveSeconds: after 10 second the object will be remove from the cache no matter what -->
+    <!--  overflowToDisk: the object will be saved on the disk -->
+    <defaultCache maxElementsInMemory="100" eternal="false" timeToIdleSeconds="5" timeToLiveSeconds="10" overflowToDisk="true"/>
+
+</ehcache>
